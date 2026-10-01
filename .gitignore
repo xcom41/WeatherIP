@@ -1,5 +1,6 @@
 .env
 .idea/
+idea/
 *.db
 weather_report.md
 __pycache__/
