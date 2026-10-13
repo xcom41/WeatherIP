@@ -26,7 +26,6 @@ def init_db(engine):
     Base.metadata.create_all(engine)
 
 def save_weather(engine, city, rows):
-    i = 0
     with Session(engine) as session:
         for row in rows:
             exists = session.scalar(
@@ -35,9 +34,7 @@ def save_weather(engine, city, rows):
             if exists:
                 continue
             session.add(Weather(city=city, **row))
-            i += 1
         session.commit()
-    return i
 
 def load_weather(engine, city):
     with Session(engine) as session:

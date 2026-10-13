@@ -6,9 +6,14 @@ import requests
 
 log = logging.getLogger(__name__)
 
-def weather_forecast(default_url, api_key, lat, lon):
+def weather_forecast(default_url, api_key, lat, lon, city):
     url = f"{default_url}/forecast"
-    params = {"lat": lat, "lon": lon, "appid": api_key, "units": "metric", "lang": "ru"}
+    if lat != "" and lon != "":
+        params = {"lat": lat, "lon": lon, "appid": api_key, "units": "metric", "lang": "ru"}
+        log.info("Запрос с координатами")
+    else:
+        params = {"q": city, "appid": api_key, "units": "metric", "lang": "ru"}
+        log.info("Запрос с городом")
     response = requests.get(url, params=params, timeout=15)
 
     if response.status_code == 401:

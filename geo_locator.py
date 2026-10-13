@@ -15,6 +15,11 @@ def get_location(api_url, fallback_city):
         if city and loc:
             lat, lon = loc.split(',')
             return city, lat, lon
+        elif loc:
+            lat, lon = loc.split(',')
+            return "", lat, lon
+        else:
+            return city, "", ""
 
     except Exception as e:
         log.warning("GEO_API недоступен")
