@@ -38,7 +38,7 @@ def main():
     # БД
     engine = get_engine(DB_URL)
     init_db(engine)
-    i = save_weather(engine, city, daily)
+    save_weather(engine, city, daily)
 
     # Экспорт
     rows = load_weather(engine, city)

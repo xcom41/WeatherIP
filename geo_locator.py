@@ -18,4 +18,5 @@ def get_location(api_url, fallback_city):
 
     except Exception as e:
         log.warning("GEO_API недоступен")
+        log.info("GEO_API_FALLBACK_CITY %s", fallback_city)
         return fallback_city, 55.7558, 37.6176

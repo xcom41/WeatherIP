@@ -1,3 +1,7 @@
+import logging
+
+log = logging.getLogger(__name__)
+
 def export(file, city, rows):
     lines = [
         "# Прогноз погоды",
@@ -16,4 +20,6 @@ def export(file, city, rows):
     with open(file, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
+
+    log.info("Файл записан")
     return file
